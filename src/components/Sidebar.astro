@@ -14,7 +14,11 @@ const days = (await getCollection('days')).sort((a, b) =>
 <nav class="sidebar" aria-label="Trip days">
   <a href={import.meta.env.BASE_URL} class="sidebar-home">
     <span class="home-icon">🗺️</span>
-    <span>Overview</span>
+    <span>Home</span>
+  </a>
+  <a href={`${import.meta.env.BASE_URL}packing`} class="sidebar-packing">
+    <span class="packing-icon">🧳</span>
+    <span>Packing Checklist</span>
   </a>
   <ul>
     {days.map((day) => (
@@ -60,6 +64,20 @@ const days = (await getCollection('days')).sort((a, b) =>
     font-size: 0.95rem;
   }
   .sidebar-home:hover { color: #4e7a56; }
+  .sidebar-packing {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #4e7a56;
+    text-decoration: none;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 1rem;
+  }
+  .sidebar-packing:hover { color: #2a5c36; }
   ul {
     list-style: none;
     margin: 0;
