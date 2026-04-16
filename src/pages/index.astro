@@ -53,7 +53,7 @@ const days = (await getCollection('days')).sort((a, b) =>
                 <div class="card-image placeholder"></div>
               )}
               <div class="card-body">
-                <p class="card-date">{day.data.date}{day.data.miles ? ` · ${day.data.miles} mi` : ''}</p>
+                <p class="card-date">{day.data.date}</p>
                 <h3 class="card-title">{day.data.title}</h3>
                 <p class="card-summary">{day.data.summary}</p>
               </div>
