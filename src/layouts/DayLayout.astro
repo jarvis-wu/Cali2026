@@ -24,7 +24,7 @@ const { title, date, miles, heroImage, summary, slug, prev, next } = Astro.props
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>{title} — Cali 2026</title>
     <meta name="description" content={summary} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -110,8 +110,8 @@ const { title, date, miles, heroImage, summary, slug, prev, next } = Astro.props
   }
   @media (max-width: 768px) {
     .hero-image { height: 260px; }
-    /* top padding accounts for the fixed hamburger button (~44px + gap) */
-    .prose { padding: 3.5rem 1.25rem 3rem; }
+    /* top padding clears the fixed hamburger button + notch */
+    .prose { padding: calc(env(safe-area-inset-top) + 3.5rem) 1.25rem 3rem; }
     .day-header h1 { font-size: 1.6rem; }
   }
 </style>

@@ -132,13 +132,18 @@ const days = (await getCollection('days')).sort((a, b) =>
   }
 
   @media (max-width: 768px) {
-    .sidebar-toggle { display: flex; }
+    .sidebar-toggle {
+      display: flex;
+      top: calc(1rem + env(safe-area-inset-top));
+    }
     .sidebar {
       position: fixed;
       left: -270px;
       top: 0;
-      height: 100vh;
-      padding-top: 4rem; /* clear the hamburger button */
+      height: 100dvh;
+      /* background extends to physical edges; content clears notch + hamburger */
+      padding-top: calc(env(safe-area-inset-top) + 4rem);
+      padding-bottom: env(safe-area-inset-bottom);
       transition: left 0.25s ease;
       box-shadow: 2px 0 12px rgba(0,0,0,0.1);
     }
