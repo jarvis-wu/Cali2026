@@ -5,7 +5,14 @@
       "Read(//Users/jarviswu/Develop/**)",
       "Bash(npm create *)",
       "Bash(npx astro *)",
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Read(//Users/jarviswu/.ssh/**)",
+      "Bash(git remote *)",
+      "Bash(ssh *)",
+      "Bash(ssh-add -l)",
+      "Bash(ssh-keygen -lf ~/.ssh/id_rsa_personal.pub)",
+      "Bash(ssh-keygen -lf ~/.ssh/id_ed25519.pub)",
+      "Bash(ssh-add --apple-use-keychain ~/.ssh/id_rsa_personal)"
     ]
   }
 }
