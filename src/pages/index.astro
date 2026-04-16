@@ -70,12 +70,24 @@ const days = (await getCollection('days')).sort((a, b) =>
     <footer class="site-footer">
       <p>Made with Astro · {new Date().getFullYear()}</p>
     </footer>
+  <script>
+    document.querySelectorAll('.card-image img').forEach((img) => {
+      const el = img as HTMLImageElement;
+      if (el.complete) {
+        el.classList.add('loaded');
+      } else {
+        el.addEventListener('load', () => el.classList.add('loaded'));
+      }
+    });
+  </script>
   </body>
 </html>
 
 <style>
-  html, .index-page {
+  .index-page {
     background: #154753;
+    min-height: 100dvh;
+    overscroll-behavior-y: none;
   }
   .site-header {
     position: relative;
@@ -83,7 +95,7 @@ const days = (await getCollection('days')).sort((a, b) =>
     padding: 6rem 2rem;
     text-align: center;
     overflow: hidden;
-    background: #111;
+    background: #154753;
   }
   .header-bg {
     position: absolute;
@@ -118,7 +130,7 @@ const days = (await getCollection('days')).sort((a, b) =>
   .index-main {
     max-width: 1000px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 1.5rem 2rem 2rem;
     background: #fff;
   }
   .overview-map {
@@ -155,25 +167,33 @@ const days = (await getCollection('days')).sort((a, b) =>
     color: inherit;
     transition: box-shadow 0.2s, transform 0.2s;
   }
-  .day-card:hover {
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    transform: translateY(-2px);
+  @media (hover: hover) {
+    .day-card:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
   }
   .card-image {
     aspect-ratio: 3 / 2;
     overflow: hidden;
-    background: #1a1a1a;
+    background: #e8e8e8;
   }
   .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s;
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s;
   }
-  .day-card:hover .card-image img { transform: scale(1.04); }
+  .card-image img.loaded {
+    opacity: 1;
+  }
+  @media (hover: hover) {
+    .day-card:hover .card-image img { transform: scale(1.04); }
+  }
   .card-image.placeholder {
-    background: #1a1a1a;
+    background: #e8e8e8;
   }
   .card-body {
     padding: 1rem 1.25rem 1.25rem;
