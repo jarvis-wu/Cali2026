@@ -36,7 +36,7 @@ const days = (await getCollection('days')).sort((a, b) =>
   .sidebar {
     width: 260px;
     min-width: 260px;
-    background: #f8f8f8;
+    background: #ffffff;
     border-right: 1px solid #e8e8e8;
     padding: 1.5rem 0;
     position: sticky;
@@ -59,7 +59,7 @@ const days = (await getCollection('days')).sort((a, b) =>
     margin-bottom: 0.5rem;
     font-size: 0.95rem;
   }
-  .sidebar-home:hover { color: #e35d2b; }
+  .sidebar-home:hover { color: #4e7a56; }
   ul {
     list-style: none;
     margin: 0;
@@ -75,12 +75,12 @@ const days = (await getCollection('days')).sort((a, b) =>
     transition: background 0.15s, border-color 0.15s;
   }
   .day-link:hover {
-    background: #efefef;
+    background: #eef5f0;
     color: #111;
   }
   .day-link.active {
-    border-left-color: #e35d2b;
-    background: #fff3ee;
+    border-left-color: #4e7a56;
+    background: #e5f2e9;
     color: #111;
   }
   .day-title {
@@ -93,13 +93,13 @@ const days = (await getCollection('days')).sort((a, b) =>
     color: #888;
     margin-top: 0.1rem;
   }
-  .day-link.active .day-date { color: #b0593a; }
+  .day-link.active .day-date { color: #4e7a56; }
 
   @media (max-width: 768px) {
     .sidebar {
       position: fixed;
       top: calc(env(safe-area-inset-top) + 60px);
-      left: 1rem;
+      left: 0.5rem;
       width: 270px;
       max-height: calc(100dvh - env(safe-area-inset-top) - 80px - 1rem);
       border-radius: 16px;
