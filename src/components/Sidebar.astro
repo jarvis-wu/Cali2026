@@ -98,16 +98,25 @@ const days = (await getCollection('days')).sort((a, b) =>
   @media (max-width: 768px) {
     .sidebar {
       position: fixed;
-      left: -270px;
-      top: 0;
-      height: 100vh;
-      height: 100dvh;
-      height: 100lvh;
-      padding-top: calc(env(safe-area-inset-top) + 4rem);
-      padding-bottom: env(safe-area-inset-bottom);
-      transition: left 0.25s ease;
-      box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+      top: calc(env(safe-area-inset-top) + 60px);
+      left: 1rem;
+      width: 270px;
+      max-height: calc(100dvh - env(safe-area-inset-top) - 80px - 1rem);
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.18);
+      border: none;
+      border-right: none;
+      padding-top: 0.75rem;
+      padding-bottom: 0.75rem;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateX(-20px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
     }
-    .sidebar.open { left: 0; }
+    .sidebar.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
   }
 </style>

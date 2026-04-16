@@ -111,11 +111,6 @@ const { title, date, heroImage, summary, slug, prev, next } = Astro.props;
       const sidebar = document.querySelector('.sidebar') as HTMLElement;
       const SIDEBAR_BG = '#f8f8f8';
 
-      // Force sidebar to fill the full physical screen height on mobile,
-      // overriding any CSS viewport unit inconsistencies
-      if (window.matchMedia('(max-width: 768px)').matches) {
-        sidebar.style.height = window.screen.height + 'px';
-      }
 
       function setSidebarOpen(open: boolean) {
         sidebar.classList.toggle('open', open);

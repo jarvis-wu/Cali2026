@@ -1,20 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
 import '../styles/global.css';
-import sharp from 'sharp';
-import { resolve } from 'path';
 
 const days = (await getCollection('days')).sort((a, b) =>
   a.id.localeCompare(b.id)
 );
 
-// Compute average color of hero image for theme-color meta tag
-let themeColor = '#111111';
-try {
-  const imgPath = resolve('public/images/cali.jpg');
-  const { data } = await sharp(imgPath).resize(1, 1).raw().toBuffer({ resolveWithObject: true });
-  themeColor = '#' + [data[0], data[1], data[2]].map(v => v.toString(16).padStart(2, '0')).join('');
-} catch (_) {}
+const themeColor = '#677661'; // average color of cali.jpg hero image
 ---
 
 <!doctype html>
