@@ -210,7 +210,7 @@ const days = (await getCollection('days')).sort((a, b) =>
     .site-title { font-size: 2rem; }
     .grid { grid-template-columns: 1fr; }
     .site-header {
-      aspect-ratio: unset;
+      margin-top: calc(-1 * env(safe-area-inset-top));
       min-height: calc(env(safe-area-inset-top) + 240px);
       padding: calc(env(safe-area-inset-top) + 3rem) 2rem 3rem;
       display: flex;
