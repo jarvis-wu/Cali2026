@@ -109,17 +109,31 @@ const { title, date, heroImage, summary, slug, prev, next } = Astro.props;
     <script>
       const toggle = document.querySelector('.sidebar-toggle') as HTMLButtonElement;
       const sidebar = document.querySelector('.sidebar') as HTMLElement;
-      toggle?.addEventListener('click', () => {
-        const open = sidebar.classList.toggle('open');
+      const SIDEBAR_BG = '#f8f8f8';
+
+      // Force sidebar to fill the full physical screen height on mobile,
+      // overriding any CSS viewport unit inconsistencies
+      if (window.matchMedia('(max-width: 768px)').matches) {
+        sidebar.style.height = window.screen.height + 'px';
+      }
+
+      function setSidebarOpen(open: boolean) {
+        sidebar.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', String(open));
+        // Match html background to sidebar so Safari's bottom toolbar
+        // area shows the same color as the sidebar panel
+        document.documentElement.style.background = open ? SIDEBAR_BG : '';
+      }
+
+      toggle?.addEventListener('click', () => {
+        setSidebarOpen(!sidebar.classList.contains('open'));
       });
       // Close sidebar when clicking outside
       document.addEventListener('click', (e) => {
         if (sidebar.classList.contains('open') &&
             !sidebar.contains(e.target as Node) &&
             !toggle.contains(e.target as Node)) {
-          sidebar.classList.remove('open');
-          toggle.setAttribute('aria-expanded', 'false');
+          setSidebarOpen(false);
         }
       });
     </script>
