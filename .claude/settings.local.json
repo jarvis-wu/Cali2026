@@ -16,7 +16,9 @@
       "Bash(gh run *)",
       "Bash(node -e \"require\\('sharp'\\)\")",
       "Bash(node *)",
-      "WebFetch(domain:roger.zone)"
+      "WebFetch(domain:roger.zone)",
+      "Bash(curl -s \"https://roger.zone/theme-color-preview\")",
+      "Bash(curl -sL \"https://roger.zone/theme-color-preview\")"
     ]
   }
 }

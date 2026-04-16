@@ -109,15 +109,10 @@ const { title, date, heroImage, summary, slug, prev, next } = Astro.props;
     <script>
       const toggle = document.querySelector('.sidebar-toggle') as HTMLButtonElement;
       const sidebar = document.querySelector('.sidebar') as HTMLElement;
-      const SIDEBAR_BG = '#f8f8f8';
-
 
       function setSidebarOpen(open: boolean) {
         sidebar.classList.toggle('open', open);
         toggle.setAttribute('aria-expanded', String(open));
-        // Match html background to sidebar so Safari's bottom toolbar
-        // area shows the same color as the sidebar panel
-        document.documentElement.style.background = open ? SIDEBAR_BG : '';
       }
 
       toggle?.addEventListener('click', () => {
