@@ -1,0 +1,146 @@
+---
+import { getCollection } from 'astro:content';
+
+interface Props {
+  currentSlug?: string;
+}
+const { currentSlug } = Astro.props;
+
+const days = (await getCollection('days')).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+---
+
+<nav class="sidebar" aria-label="Trip days">
+  <a href="/" class="sidebar-home">
+    <span class="home-icon">🗺️</span>
+    <span>Overview</span>
+  </a>
+  <ul>
+    {days.map((day) => (
+      <li>
+        <a
+          href={`/days/${day.id}`}
+          class:list={['day-link', { active: day.id === currentSlug }]}
+          aria-current={day.id === currentSlug ? 'page' : undefined}
+        >
+          <span class="day-title">{day.data.title}</span>
+          <span class="day-date">{day.data.date}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<!-- Mobile hamburger toggle -->
+<button class="sidebar-toggle" aria-label="Toggle navigation" aria-expanded="false">
+  <span></span><span></span><span></span>
+</button>
+
+<script>
+  const toggle = document.querySelector('.sidebar-toggle') as HTMLButtonElement;
+  const sidebar = document.querySelector('.sidebar') as HTMLElement;
+  toggle?.addEventListener('click', () => {
+    const open = sidebar.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', String(open));
+  });
+</script>
+
+<style>
+  .sidebar {
+    width: 260px;
+    min-width: 260px;
+    background: #f8f8f8;
+    border-right: 1px solid #e8e8e8;
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    z-index: 10;
+  }
+  .sidebar-home {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+  }
+  .sidebar-home:hover { color: #e35d2b; }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .day-link {
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 1.25rem;
+    text-decoration: none;
+    color: #444;
+    border-left: 3px solid transparent;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .day-link:hover {
+    background: #efefef;
+    color: #111;
+  }
+  .day-link.active {
+    border-left-color: #e35d2b;
+    background: #fff3ee;
+    color: #111;
+  }
+  .day-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.3;
+  }
+  .day-date {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 0.1rem;
+  }
+  .day-link.active .day-date { color: #b0593a; }
+
+  .sidebar-toggle {
+    display: none;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 0.4rem 0.5rem;
+    cursor: pointer;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .sidebar-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
+    .sidebar-toggle { display: flex; }
+    .sidebar {
+      position: fixed;
+      left: -270px;
+      top: 0;
+      height: 100vh;
+      transition: left 0.25s ease;
+      box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    }
+    .sidebar.open { left: 0; }
+  }
+</style>

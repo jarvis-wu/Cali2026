@@ -1,0 +1,111 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: #222;
+  line-height: 1.7;
+}
+
+/* Prose content styles — applied inside .prose class */
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: #111;
+  line-height: 1.25;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 0.4rem;
+}
+
+.prose h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.prose p {
+  margin: 0 0 1.25rem;
+  color: #333;
+}
+
+.prose a {
+  color: #e35d2b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose a:hover {
+  color: #b8441a;
+}
+
+.prose ul,
+.prose ol {
+  padding-left: 1.5rem;
+  margin: 0 0 1.25rem;
+  color: #333;
+}
+
+.prose li {
+  margin-bottom: 0.4rem;
+}
+
+.prose blockquote {
+  border-left: 4px solid #e35d2b;
+  margin: 1.5rem 0;
+  padding: 0.5rem 1.25rem;
+  background: #fff8f5;
+  border-radius: 0 6px 6px 0;
+  color: #555;
+  font-style: italic;
+}
+
+.prose img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+.prose hr {
+  border: none;
+  border-top: 1px solid #e8e8e8;
+  margin: 2.5rem 0;
+}
+
+.prose strong {
+  color: #111;
+  font-weight: 600;
+}
+
+.prose code {
+  background: #f4f4f4;
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  font-size: 0.875em;
+}
+
+/* Tip / callout boxes */
+.tip {
+  background: #f0f9ff;
+  border-left: 4px solid #3b82f6;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+}
+
+.tip p:last-child { margin-bottom: 0; }

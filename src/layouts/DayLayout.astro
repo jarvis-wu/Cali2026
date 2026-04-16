@@ -1,0 +1,116 @@
+---
+import Sidebar from '../components/Sidebar.astro';
+import DayNav from '../components/DayNav.astro';
+import '../styles/global.css';
+
+interface DayEntry {
+  id: string;
+  data: { title: string };
+}
+interface Props {
+  title: string;
+  date: string;
+  miles?: number;
+  heroImage?: string;
+  summary: string;
+  slug: string;
+  prev?: DayEntry;
+  next?: DayEntry;
+}
+const { title, date, miles, heroImage, summary, slug, prev, next } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} — Cali 2026</title>
+    <meta name="description" content={summary} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <Sidebar currentSlug={slug} />
+
+      <main class="main-content">
+        {heroImage && (
+          <div class="hero-image">
+            <img src={heroImage} alt={title} />
+          </div>
+        )}
+
+        <article class="prose">
+          <header class="day-header">
+            <h1>{title}</h1>
+            <div class="day-meta">
+              <span class="meta-item">📅 {date}</span>
+              {miles && <span class="meta-item">🚗 {miles} miles</span>}
+            </div>
+          </header>
+
+          <slot />
+
+          <DayNav prev={prev} next={next} />
+        </article>
+      </main>
+    </div>
+  </body>
+</html>
+
+<style>
+  .app-shell {
+    display: flex;
+    min-height: 100vh;
+  }
+  .main-content {
+    flex: 1;
+    min-width: 0;
+    overflow: auto;
+  }
+  .hero-image {
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .prose {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem 4rem;
+  }
+  .day-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e8e8e8;
+  }
+  .day-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #111;
+    margin: 0 0 0.75rem;
+  }
+  .day-meta {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+  .meta-item {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  @media (max-width: 768px) {
+    .hero-image { height: 260px; }
+    .prose { padding: 1.5rem 1.25rem 3rem; }
+    .day-header h1 { font-size: 1.6rem; }
+  }
+</style>

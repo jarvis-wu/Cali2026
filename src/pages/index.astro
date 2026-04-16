@@ -1,0 +1,194 @@
+---
+import { getCollection } from 'astro:content';
+import '../styles/global.css';
+
+const days = (await getCollection('days')).sort((a, b) =>
+  a.id.localeCompare(b.id)
+);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cali 2026 — Road Trip</title>
+    <meta name="description" content="Our California road trip — day by day." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="index-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <h1 class="site-title">Cali 2026</h1>
+        <p class="site-tagline">A road trip with friends — {days.length} days, countless miles.</p>
+      </div>
+    </header>
+
+    <main class="index-main">
+      {/* To add a full-route map: paste your Google Maps embed URL as the src below, then uncomment */}
+      {/*
+      <section class="overview-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=..."
+          title="Full trip route"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </section>
+      */}
+
+      <section class="days-grid">
+        <h2 class="section-heading">The Itinerary</h2>
+        <div class="grid">
+          {days.map((day) => (
+            <a href={`/days/${day.id}`} class="day-card">
+              {day.data.heroImage ? (
+                <div class="card-image">
+                  <img src={day.data.heroImage} alt={day.data.title} loading="lazy" />
+                </div>
+              ) : (
+                <div class="card-image placeholder"></div>
+              )}
+              <div class="card-body">
+                <p class="card-date">{day.data.date}{day.data.miles ? ` · ${day.data.miles} mi` : ''}</p>
+                <h3 class="card-title">{day.data.title}</h3>
+                <p class="card-summary">{day.data.summary}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Made with Astro · {new Date().getFullYear()}</p>
+    </footer>
+  </body>
+</html>
+
+<style>
+  .index-page {
+    background: #fff;
+  }
+  .site-header {
+    background: #111;
+    color: #fff;
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .header-inner {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+  .site-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+    letter-spacing: -0.02em;
+  }
+  .site-tagline {
+    font-size: 1.1rem;
+    color: #aaa;
+    margin: 0;
+  }
+  .index-main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .overview-map {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 3rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+  }
+  .overview-map iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .section-heading {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 1.5rem;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .day-card {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .day-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateY(-2px);
+  }
+  .card-image {
+    height: 180px;
+    overflow: hidden;
+    background: #f0f0f0;
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+  .day-card:hover .card-image img { transform: scale(1.04); }
+  .card-image.placeholder {
+    background: linear-gradient(135deg, #e8e8e8 0%, #d5d5d5 100%);
+  }
+  .card-body {
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  .card-date {
+    font-size: 0.78rem;
+    color: #888;
+    margin: 0 0 0.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #111;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+  .card-summary {
+    font-size: 0.875rem;
+    color: #555;
+    margin: 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .site-footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.8rem;
+    color: #aaa;
+    border-top: 1px solid #eee;
+  }
+  @media (max-width: 600px) {
+    .site-title { font-size: 2rem; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
