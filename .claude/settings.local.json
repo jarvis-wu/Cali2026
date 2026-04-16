@@ -12,7 +12,8 @@
       "Bash(ssh-add -l)",
       "Bash(ssh-keygen -lf ~/.ssh/id_rsa_personal.pub)",
       "Bash(ssh-keygen -lf ~/.ssh/id_ed25519.pub)",
-      "Bash(ssh-add --apple-use-keychain ~/.ssh/id_rsa_personal)"
+      "Bash(ssh-add --apple-use-keychain ~/.ssh/id_rsa_personal)",
+      "Bash(gh run *)"
     ]
   }
 }

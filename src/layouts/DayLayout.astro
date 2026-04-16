@@ -87,11 +87,11 @@ const { title, date, heroImage, summary, slug, prev, next } = Astro.props;
       <main class="main-content">
         {heroImage && (
           <div class="hero-image">
-            <img src={heroImage} alt={title} />
+            <img src={`${import.meta.env.BASE_URL}${heroImage}`} alt={title} />
           </div>
         )}
 
-        <article class="prose">
+        <article class:list={['prose', { 'has-hero': heroImage }]}>
           <header class="day-header">
             <h1>{title}</h1>
             <div class="day-meta">
@@ -224,10 +224,16 @@ const { title, date, heroImage, summary, slug, prev, next } = Astro.props;
       pointer-events: none;
     }
 
-    .hero-image { height: 260px; }
+    .hero-image {
+      height: 260px;
+      margin-top: calc(env(safe-area-inset-top) + 52px);
+    }
     .prose {
-      /* 52px bar + safe area + small gap */
+      /* when no hero image, clear the fixed bar */
       padding: calc(env(safe-area-inset-top) + 52px + 1.5rem) 1.25rem 3rem;
+    }
+    .prose.has-hero {
+      padding-top: 2rem;
     }
     .day-header h1 { font-size: 1.6rem; }
   }
