@@ -11,7 +11,7 @@ const days = (await getCollection('days')).sort((a, b) =>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>Cali 2026 — Road Trip</title>
     <meta name="description" content="Our California road trip — day by day." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -78,7 +78,7 @@ const days = (await getCollection('days')).sort((a, b) =>
   .site-header {
     position: relative;
     color: #fff;
-    padding: 6rem 2rem;
+    padding: calc(env(safe-area-inset-top) + 6rem) 2rem 6rem;
     text-align: center;
     overflow: hidden;
     background: #111;
@@ -210,8 +210,9 @@ const days = (await getCollection('days')).sort((a, b) =>
     .site-title { font-size: 2rem; }
     .grid { grid-template-columns: 1fr; }
     .site-header {
-      aspect-ratio: 3 / 2;
-      padding: 0 2rem;
+      aspect-ratio: unset;
+      min-height: calc(env(safe-area-inset-top) + 240px);
+      padding: calc(env(safe-area-inset-top) + 3rem) 2rem 3rem;
       display: flex;
       align-items: center;
       justify-content: center;
