@@ -1,56 +1,55 @@
 ---
-title: "Day 1: Departure"
-date: "June 12, 2026"
+title: "Day 1: SFO → Yosemite Valley"
+date: "Aug 15, 2026"
 heroImage: "images/day1.jpg"
-summary: "The trip begins — bags packed, snacks loaded, let's go."
+summary: "Land at SFO, pick up the rental, and make the drive into Yosemite Valley."
 ---
 
-import YoutubeEmbed from '../../components/YoutubeEmbed.astro';
 import MapEmbed from '../../components/MapEmbed.astro';
-import ImageGrid from '../../components/ImageGrid.astro';
+import YoutubeEmbed from '../../components/YoutubeEmbed.astro';
 
-After months of planning, the day finally arrived. We met at 7am, crammed the car full of bags, and hit the road.
+The trip starts here. We land at SFO early afternoon, grab the rental, and point east toward the Sierra Nevada. By nightfall we're sleeping under canvas in Yosemite Valley.
 
-## The Plan
+## Plan
 
-Before leaving, we mapped out the full route — roughly **2,400 miles** over **7 days** through California.
+- Land at SFO at around 1pm (hopefully)
+- Pick up rental car and load luggage
+- Drive to Yosemite Valley (~4 hrs)
+- Optional detour: Columbia State Historic Park (Gold Rush town, see below)
+- Check in at Curry Village tent for the night
 
-The rough outline:
-- San Francisco → coastal drive
-- Big Sur → Hearst Castle
-- Los Angeles → Joshua Tree
-- Las Vegas (detour) → back home
+## Route
 
-## Starting Map
-
-{/* Replace with your actual Google Maps embed src */}
 <MapEmbed
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.835434509374!2d-122.4194!3d37.7749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDQ2JzI5LjYiTiAxMjLCsDI1JzA5LjgiVw!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
-  title="Trip starting point"
-  height={380}
+  src="https://maps.google.com/maps?f=d&saddr=San+Francisco+International+Airport,CA&daddr=Columbia+State+Historic+Park,CA+to:Curry+Village,+Yosemite+Valley,CA&output=embed"
+  title="SFO to Yosemite Valley"
+  height={400}
 />
 
-## Morning Chaos
+## Optional Detour: Columbia State Historic Park
 
-Loading the car took way longer than expected. Somehow three people managed to pack enough clothes for a month.
+About halfway between Stockton and Yosemite, Columbia is a well-preserved Gold Rush town we can walk through for free. Worth a 45-minute stop if we're not in a rush. Skip if time is tight.
 
-> "We said light packing." — nobody actually followed this.
+**Address:** 22708 Broadway St, Columbia, CA 95310
 
-## Send-Off Video
+<img src={`${import.meta.env.BASE_URL}images/columbia.jpg`} alt="Columbia State Historic Park" style="width:100%;border-radius:6px;margin:0.75rem 0" />
 
-{/* Replace with your actual YouTube video ID */}
-<YoutubeEmbed id="dQw4w9WgXcQ" title="Road trip send-off" />
+## Curry Village
 
-## Photos
+Staying at [Curry Village](https://www.travelyosemite.com/lodging/half-dome-village/) (Half Dome Village) in canvas tent cabins. Central location in the valley — easy access to trails, shuttle stops, and the main visitor area.
 
-<ImageGrid
-  columns={2}
-  images={[
-    { src: "/images/day1-car.jpg", alt: "Packed car", caption: "How is this all fitting?" },
-    { src: "/images/day1-map.jpg", alt: "Paper map", caption: "Yes, we brought a paper map" },
-  ]}
-/>
+<div class="tip">
 
----
+**Tip:** The valley shuttle system is free and runs throughout Yosemite. Park the car when we arrive and rely on shuttles during our stay.
 
-Tomorrow we drive south along the coast. Early start — 6am.
+</div>
+
+## Official Soundtrack
+
+Lana wrote this one about Yosemite specifically — the granite walls, the stillness, the feeling of being small inside something ancient. It's a slow burn that matches the valley's scale. We'll probably have it on repeat somewhere on the I-580 before we even hit the foothills.
+
+<YoutubeEmbed id="AEt5owHwVD0" title="Lana Del Rey - Yosemite (Official Audio)" />
+
+<iframe style="border-radius:12px;margin-top:1rem" src="https://open.spotify.com/embed/track/3WIifw9lqdgSZpt9renBAg?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+<iframe allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write" frameborder="0" height="175" style="width:100%;max-width:100%;overflow:hidden;border-radius:10px;margin-top:1rem" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation" src="https://embed.music.apple.com/us/song/yosemite/1545568026"></iframe>
