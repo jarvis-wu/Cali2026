@@ -44,7 +44,7 @@ const days = (await getCollection('days')).sort((a, b) =>
         <h2 class="section-heading">The Itinerary</h2>
         <div class="grid">
           {days.map((day) => (
-            <a href={`/days/${day.id}`} class="day-card">
+            <a href={`${import.meta.env.BASE_URL}days/${day.id}`} class="day-card">
               {day.data.heroImage ? (
                 <div class="card-image">
                   <img src={day.data.heroImage} alt={day.data.title} loading="lazy" />

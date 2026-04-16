@@ -12,7 +12,7 @@ const days = (await getCollection('days')).sort((a, b) =>
 ---
 
 <nav class="sidebar" aria-label="Trip days">
-  <a href="/" class="sidebar-home">
+  <a href={import.meta.env.BASE_URL} class="sidebar-home">
     <span class="home-icon">🗺️</span>
     <span>Overview</span>
   </a>
@@ -20,7 +20,7 @@ const days = (await getCollection('days')).sort((a, b) =>
     {days.map((day) => (
       <li>
         <a
-          href={`/days/${day.id}`}
+          href={`${import.meta.env.BASE_URL}days/${day.id}`}
           class:list={['day-link', { active: day.id === currentSlug }]}
           aria-current={day.id === currentSlug ? 'page' : undefined}
         >
