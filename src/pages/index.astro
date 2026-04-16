@@ -6,7 +6,6 @@ const days = (await getCollection('days')).sort((a, b) =>
   a.id.localeCompare(b.id)
 );
 
-const themeColor = '#154753';
 ---
 
 <!doctype html>
@@ -17,7 +16,7 @@ const themeColor = '#154753';
     <title>Cali 2026 — Road Trip</title>
     <meta name="description" content="Our California road trip — day by day." />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="theme-color" content={themeColor} />
+    <meta name="theme-color" content="#154753">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -75,13 +74,16 @@ const themeColor = '#154753';
 </html>
 
 <style>
+  html {
+    background: #154753;
+  }
   .index-page {
     background: #fff;
   }
   .site-header {
     position: relative;
     color: #fff;
-    padding: calc(env(safe-area-inset-top) + 6rem) 2rem 6rem;
+    padding: 6rem 2rem;
     text-align: center;
     overflow: hidden;
     background: #111;
@@ -104,6 +106,7 @@ const themeColor = '#154753';
     z-index: 1;
     max-width: 680px;
     margin: 0 auto;
+    padding-top: env(safe-area-inset-top);
   }
   .site-title {
     font-size: 3rem;
@@ -213,9 +216,7 @@ const themeColor = '#154753';
     .site-title { font-size: 2rem; }
     .grid { grid-template-columns: 1fr; }
     .site-header {
-      margin-top: calc(-1 * env(safe-area-inset-top));
-      min-height: calc(env(safe-area-inset-top) + 240px);
-      padding: calc(env(safe-area-inset-top) + 3rem) 2rem 3rem;
+      padding: 3rem 2rem;
       display: flex;
       align-items: center;
       justify-content: center;

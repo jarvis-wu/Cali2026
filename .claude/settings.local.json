@@ -15,7 +15,8 @@
       "Bash(ssh-add --apple-use-keychain ~/.ssh/id_rsa_personal)",
       "Bash(gh run *)",
       "Bash(node -e \"require\\('sharp'\\)\")",
-      "Bash(node *)"
+      "Bash(node *)",
+      "WebFetch(domain:roger.zone)"
     ]
   }
 }
