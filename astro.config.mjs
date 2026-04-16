@@ -6,6 +6,6 @@ import mdx from '@astrojs/mdx';
 // If deploying to Netlify/Vercel, you can remove the site and base fields.
 export default defineConfig({
   site: 'https://jarvis-wu.github.io',
-  base: '/Cali2026',
+  base: '/Cali2026/',
   integrations: [mdx()],
 });
