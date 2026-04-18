@@ -27,10 +27,11 @@ const days = (await getCollection('days')).sort((a, b) =>
       <div class="header-overlay"></div>
       <div class="header-inner">
         <h1 class="site-title">Cali 2026</h1>
-        <p class="site-tagline">From Yosemite to Pacific Coast, discover the best California has to offer.</p>
+        <p class="site-tagline">From High Sierra to Pacific Coast, discover California's finest.</p>
       </div>
     </header>
 
+    <div class="content-wrap">
     <main class="index-main">
       {/* To add a full-route map: paste your Google Maps embed URL as the src below, then uncomment */}
       {/*
@@ -80,6 +81,7 @@ const days = (await getCollection('days')).sort((a, b) =>
     <footer class="site-footer">
       <p>Made with Astro · {new Date().getFullYear()}</p>
     </footer>
+    </div>
   <script>
     const banner = document.getElementById('packing-banner');
     if (localStorage.getItem('packing-banner-dismissed') === '1') {
@@ -150,11 +152,13 @@ const days = (await getCollection('days')).sort((a, b) =>
     font-weight: 500;
     margin: 0;
   }
+  .content-wrap {
+    background: #fff;
+  }
   .index-main {
     max-width: 1000px;
     margin: 0 auto;
     padding: 1.5rem 2rem 2rem;
-    background: #fff;
   }
   .overview-map {
     width: 100%;
@@ -308,7 +312,6 @@ const days = (await getCollection('days')).sort((a, b) =>
     font-size: 0.8rem;
     color: #aaa;
     border-top: 1px solid #eee;
-    background: #fff;
   }
   @media (max-width: 600px) {
     .site-title { font-size: 2rem; }

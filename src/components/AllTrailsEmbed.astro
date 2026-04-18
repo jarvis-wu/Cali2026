@@ -1,0 +1,40 @@
+---
+interface Props {
+  src: string;
+  title?: string;
+  height?: number;
+}
+const { src, title = 'AllTrails trail map', height = 400 } = Astro.props;
+---
+
+<div class="alltrails-wrap" style={`--at-height: ${height}px`}>
+  <iframe
+    src={src}
+    title={title}
+    frameborder="0"
+    scrolling="no"
+    marginheight="0"
+    marginwidth="0"
+    loading="lazy"
+  ></iframe>
+</div>
+
+<style>
+  .alltrails-wrap {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e5e5e5;
+    background: #fff;
+    padding: 0.75rem;
+  }
+  iframe {
+    width: 100%;
+    height: var(--at-height, 400px);
+    border: none;
+    display: block;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+</style>
